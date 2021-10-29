@@ -1,0 +1,11 @@
+@if (ViewBag.repeticion <= 10)
+{
+    for (int i = 0; i < ViewBag.repeticion; i++)
+    {
+        <h1>Hola @ViewBag.parametroNombre @ViewBag.parametroApellido !</h1>
+    }
+}
+else
+{
+    <h1>Para un poco!!!</h1>
+}
