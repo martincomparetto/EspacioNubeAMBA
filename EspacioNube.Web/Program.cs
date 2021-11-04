@@ -1,3 +1,4 @@
+using EspacioNube.Web.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,8 @@ namespace EspacioNube.Web
 {
     public class Program
     {
+        public static List<Especialidad> EspecialidadesList = new List<Especialidad>();
+        
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

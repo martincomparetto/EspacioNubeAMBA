@@ -1,0 +1,16 @@
+@model Especialidad
+
+<h1>Editar Especialidad</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="@Url.Action("Actualizar", "Especialidades")" method="get">
+            <input type="text" name="id" asp-for="ID" hidden>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" asp-for="Denominacion">
+            </div>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</div>
