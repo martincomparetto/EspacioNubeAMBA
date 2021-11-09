@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using EspacioNube.Web.Data;
 using EspacioNube.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,9 +8,16 @@ namespace EspacioNube.Web.Controllers
 {
     public class EspecialidadesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public EspecialidadesController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
-            return View(EspacioNube.Web.Program.EspecialidadesList);
+            return View(_context.Especialidades.ToList());
         }
 
         public IActionResult Create()
@@ -21,10 +29,10 @@ namespace EspacioNube.Web.Controllers
         public IActionResult Guardar(string nombre)
         {
             Especialidad nuevaEspecialidad = new Especialidad();
-            nuevaEspecialidad.ID = EspacioNube.Web.Program.EspecialidadesList.Count + 1;
             nuevaEspecialidad.Denominacion = nombre;
 
-            EspacioNube.Web.Program.EspecialidadesList.Add(nuevaEspecialidad);
+            _context.Especialidades.Add(nuevaEspecialidad);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -45,6 +53,8 @@ namespace EspacioNube.Web.Controllers
             if (editar != null)
             {
                 editar.Denominacion = nombre;
+                _context.Especialidades.Update(editar);
+                _context.SaveChanges();
             }
             return RedirectToAction("Index");
         }
@@ -60,7 +70,7 @@ namespace EspacioNube.Web.Controllers
             //         break;
             //     }
             // }
-            Especialidad find = EspacioNube.Web.Program.EspecialidadesList.Find(elemento => elemento.ID == id);
+            Especialidad find = _context.Especialidades.Find(id);
 
             return find;
         }

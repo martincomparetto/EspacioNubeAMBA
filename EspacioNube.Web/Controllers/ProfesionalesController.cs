@@ -17,7 +17,8 @@ namespace EspacioNube.Web.Controllers
 
         public IActionResult Guardar(string nombre, string apellido, int especialidadID)
         {
-            Especialidad especilidadSeleccionada = Program.EspecialidadesList.Find(e => e.ID == especialidadID);
+            // Especialidad especilidadSeleccionada = Program.EspecialidadesList.Find(e => e.ID == especialidadID);
+            Especialidad especilidadSeleccionada = null;
             Profesional nuevo = new Profesional() {
                 ID = Program.ProfesionalesList.Count + 1,
                 Nombre = nombre,

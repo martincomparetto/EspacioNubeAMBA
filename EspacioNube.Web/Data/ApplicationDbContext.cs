@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using EspacioNube.Web.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,9 @@ namespace EspacioNube.Web.Data
             : base(options)
         {
         }
+
+        public DbSet<Especialidad> Especialidades { get; set; }
+
+        public DbSet<Profesional> Profesionales { get; set; }
     }
 }
