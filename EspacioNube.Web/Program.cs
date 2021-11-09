@@ -13,6 +13,7 @@ namespace EspacioNube.Web
     public class Program
     {
         public static List<Especialidad> EspecialidadesList = new List<Especialidad>();
+        public static List<Profesional> ProfesionalesList = new List<Profesional>();
         
         public static void Main(string[] args)
         {

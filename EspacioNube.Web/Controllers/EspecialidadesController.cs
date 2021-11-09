@@ -17,10 +17,11 @@ namespace EspacioNube.Web.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Guardar(string nombre)
         {
             Especialidad nuevaEspecialidad = new Especialidad();
-            nuevaEspecialidad.ID = Guid.NewGuid();
+            nuevaEspecialidad.ID = EspacioNube.Web.Program.EspecialidadesList.Count + 1;
             nuevaEspecialidad.Denominacion = nombre;
 
             EspacioNube.Web.Program.EspecialidadesList.Add(nuevaEspecialidad);
@@ -28,7 +29,7 @@ namespace EspacioNube.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Editar(Guid id)
+        public IActionResult Editar(int id)
         {
             Especialidad editar = Buscar(id);
             if (editar == null)
@@ -38,7 +39,7 @@ namespace EspacioNube.Web.Controllers
             return View(editar);
         }
 
-        public IActionResult Actualizar(Guid id, string nombre)
+        public IActionResult Actualizar(int id, string nombre)
         {
             Especialidad editar = Buscar(id);
             if (editar != null)
@@ -48,7 +49,7 @@ namespace EspacioNube.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        private Especialidad Buscar(Guid id)
+        private Especialidad Buscar(int id)
         {
             // Especialidad find = null;
             // foreach (var item in EspacioNube.Web.Program.EspecialidadesList)

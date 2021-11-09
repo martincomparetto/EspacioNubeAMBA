@@ -1,0 +1,26 @@
+@model List<Profesional>
+
+<h1>Profesionales</h1>
+
+<div class="container">
+    <a asp-action="Create" asp-controller="Profesionales">Crear</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Especialidad</th>
+            <th>Estado</th>
+        </tr>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Especialidad.Denominacion</td>
+                <td>@item.Especialidad.Inactivo</td>
+            </tr>
+        }
+    </table>
+</div>
