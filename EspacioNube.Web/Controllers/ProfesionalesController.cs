@@ -1,8 +1,10 @@
 using EspacioNube.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EspacioNube.Web.Controllers
 {
+    [Authorize]
     public class ProfesionalesController : Controller
     {
         public IActionResult Index()

@@ -17,5 +17,7 @@ namespace EspacioNube.Web.Data
         public DbSet<Especialidad> Especialidades { get; set; }
 
         public DbSet<Profesional> Profesionales { get; set; }
+
+        public DbSet<Paciente> Pacientes { get; set; }
     }
 }

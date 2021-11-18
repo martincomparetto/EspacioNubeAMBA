@@ -2,10 +2,12 @@ using System;
 using System.Linq;
 using EspacioNube.Web.Data;
 using EspacioNube.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EspacioNube.Web.Controllers
 {
+    [Authorize]
     public class EspecialidadesController : Controller
     {
         private ApplicationDbContext _context;
@@ -15,6 +17,7 @@ namespace EspacioNube.Web.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_context.Especialidades.ToList());
