@@ -1,4 +1,5 @@
-﻿using EspacioNube.Web.Models;
+﻿using EspacioNube.Web.Data;
+using EspacioNube.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,15 +12,16 @@ namespace EspacioNube.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            ViewBag.EspecialidadesList = _context.Especialidades.Where(e => !e.Inactivo).ToList();
             return View();
         }
 

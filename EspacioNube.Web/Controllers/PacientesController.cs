@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using EspacioNube.Web.Data;
 using EspacioNube.Web.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -37,12 +39,22 @@ namespace EspacioNube.Web.Controllers
                 Genero = genero,
                 Email = email,
                 Celular = celular
-            };
+            }; 
+            
+            try
+            {
+                _context.Pacientes.Add(nuevoPaciente);
+                _context.SaveChanges();
 
-            _context.Pacientes.Add(nuevoPaciente);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
+                ViewBag.Error = "";
+                
+                return RedirectToAction("Index");
+            }
+            catch (Exception error)
+            {
+                ViewBag.Error = error.Message;
+                return View("Crear", nuevoPaciente);
+            }
         }
     }
 }

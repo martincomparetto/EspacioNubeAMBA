@@ -8,6 +8,7 @@ namespace EspacioNube.Web.Models
         public string Matricula { get; set; }
 
         [Required]
+        [Display(Name = "Especialidad")]
         public int EspecialidadID { get; set; }
 
         [ForeignKey("EspecialidadID")]

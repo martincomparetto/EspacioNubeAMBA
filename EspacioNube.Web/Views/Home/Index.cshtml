@@ -12,3 +12,20 @@
     </div><!-- /.modal -->
     <button id='open' data-toggle="modal" data-target="#showmodal">open modal</button>
 </div>
+
+<div class="text-center">
+    <select id="especialidades" onchange="BuscarProfesionales()">
+        @foreach (var item in ViewBag.EspecialidadesList)
+        {
+            <option value="@item.ID">@item.Denominacion</option>
+        }
+    </select>
+    <table id="tablaProfesionales">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Matricula</th>
+        </tr>
+    </table>
+</div>
+

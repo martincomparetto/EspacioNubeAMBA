@@ -1,23 +1,29 @@
+@model Profesional
+
 <h1>Nuevo Profesional</h1>
 
 <div class="row">
     <div class="col-md-6">
-        <form action="@Url.Action("Guardar", "Profesionales")" method="post">
+        <form asp-action="Guardar" method="post">
             <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" name="nombre">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input type="text" asp-for="Nombre" class="form-control" name="nombre">
             </div>
             <div class="form-group">
-                <label for="apellido">Nombre</label>
-                <input type="text" class="form-control" name="apellido">
+                <label asp-for="Apellido"></label>
+                <input type="text" asp-for="Apellido" class="form-control" name="apellido">
             </div>
             <div class="form-group">
-                <label for="especialidad">Especialidad</label>
-                <select name="especialidadID">
-                    @* @foreach (var item in EspacioNube.Web.Program.EspecialidadesList)
+                <label asp-for="Matricula"></label>
+                <input type="text" asp-for="Matricula" class="form-control" name="matricula">
+            </div>
+            <div class="form-group">
+                <label asp-for="EspecialidadID"></label>
+                <select asp-for="EspecialidadID" name="especialidadID">
+                    @foreach (var item in ViewBag.EspecialidadesList)
                     {
                         <option value="@item.ID">@item.Denominacion</option>
-                    } *@
+                    }
                 </select>
             </div>
             <input type="submit" value="Guardar">

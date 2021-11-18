@@ -12,8 +12,6 @@ namespace EspacioNube.Web
 {
     public class Program
     {
-        public static List<Profesional> ProfesionalesList = new List<Profesional>();
-        
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

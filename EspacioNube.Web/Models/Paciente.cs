@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EspacioNube.Web.Models
 {
@@ -7,7 +8,11 @@ namespace EspacioNube.Web.Models
         public int NumeroDocumento { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int Genero { get; set; }
+        
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        
         public string Celular { get; set; }
     }
 }
