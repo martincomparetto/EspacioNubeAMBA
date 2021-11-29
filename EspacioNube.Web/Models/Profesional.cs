@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,5 +14,7 @@ namespace EspacioNube.Web.Models
 
         [ForeignKey("EspecialidadID")]
         public Especialidad Especialidad { get; set; }
+
+        public List<Paciente> Pacientes { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EspacioNube.Web.Models
@@ -12,7 +14,10 @@ namespace EspacioNube.Web.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-        
+
+        [DefaultValue("0000000")]
         public string Celular { get; set; }
+
+        public List<Profesional> Profesionales { get; set; }
     }
 }

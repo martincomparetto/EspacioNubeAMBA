@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EspacioNube.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperAdmin,Profesional")]
     public class ProfesionalesController : Controller
     {
         private ApplicationDbContext _context;

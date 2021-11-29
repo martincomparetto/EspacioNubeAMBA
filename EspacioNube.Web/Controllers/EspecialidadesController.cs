@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EspacioNube.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperAdmin")]
     public class EspecialidadesController : Controller
     {
         private ApplicationDbContext _context;
