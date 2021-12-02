@@ -32,22 +32,28 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             ApplicationUser loggedUser = await UserManager.GetUserAsync(User);
-                            if(await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin"))
+                            if (await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Especialidades" asp-action="Index">Especialidades</a>
                                 </li>
                             }
-                            if(await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin") || await UserManager.IsInRoleAsync(loggedUser, "Profesional"))
+                            if (await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin") || await UserManager.IsInRoleAsync(loggedUser, "Profesional"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Profesionales" asp-action="Index">Profesionales</a>
                                 </li>
                             }
-                            if(await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin") || await UserManager.IsInRoleAsync(loggedUser, "Profesional"))
+                            if (await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin") || await UserManager.IsInRoleAsync(loggedUser, "Profesional"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Pacientes</a>
+                                </li>
+                            }
+                            if (await UserManager.IsInRoleAsync(loggedUser, "SuperAdmin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" asp-route-userRegister="UsuarioSuperAdmin">Nuevo Usuario</a>
                                 </li>
                             }
                         }

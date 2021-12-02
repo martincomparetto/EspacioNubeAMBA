@@ -43,11 +43,12 @@ namespace EspacioNube.Web.Areas.Identity.Pages.Account
 
         public string ReturnUrl { get; set; }
 
+        public string UserRegister = "";
+
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
         public class InputModel
         {
-            [Required]
             [Display(Name = "Rol")]
             public string Role { get; set; }
 
@@ -71,9 +72,10 @@ namespace EspacioNube.Web.Areas.Identity.Pages.Account
             public byte[] ProfilePicture { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string returnUrl = null, string userRegister = "UsuarioComun")
         {
             ReturnUrl = returnUrl;
+            UserRegister = userRegister;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
@@ -97,7 +99,8 @@ namespace EspacioNube.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    await _userManager.AddToRoleAsync(user, Input.Role);
+                    string inputRole = !String.IsNullOrEmpty(Input.Role) ? Input.Role : "Paciente";
+                    await _userManager.AddToRoleAsync(user, inputRole);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -116,7 +119,10 @@ namespace EspacioNube.Web.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (String.IsNullOrEmpty(Input.Role))
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }

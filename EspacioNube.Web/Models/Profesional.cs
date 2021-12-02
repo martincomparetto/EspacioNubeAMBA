@@ -15,6 +15,11 @@ namespace EspacioNube.Web.Models
         [ForeignKey("EspecialidadID")]
         public Especialidad Especialidad { get; set; }
 
+        public string UsuarioID { get; set; }
+
+        [ForeignKey("UsuarioID")]
+        public ApplicationUser Usuario { get; set; }
+
         public List<Paciente> Pacientes { get; set; }
     }
 }
